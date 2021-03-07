@@ -38,7 +38,7 @@ namespace ProjectASP.Models
         {
             var cn = Conexion.conexion();
             string query = "UPDATE peliculas SET nombre = '" + model.Nombre + "', autor = '" + model.Autor + "', actores = '" + model.Actores + "'," +
-                "anio = '" + model.Anio + "', sipnosis = '" + model.Sipnosis + "'";
+                "anio = '" + model.Anio + "', sipnosis = '" + model.Sipnosis + "' WHERE id = '"+model.Id+"'";
             if (cn.Execute(query, model) > 0)
             {
                 return true;
