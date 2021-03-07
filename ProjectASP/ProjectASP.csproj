@@ -168,11 +168,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PeliculasController.cs" />
     <Compile Include="DB\Conexion.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\PeliculaModel.cs" />
     <Compile Include="Models\prop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -217,6 +219,8 @@
     <Content Include="Views\Peliculas\Delete.cshtml" />
     <Content Include="Views\Peliculas\Edit.cshtml" />
     <Content Include="Views\Peliculas\Index.cshtml" />
+    <Content Include="Views\Login\Logout.cshtml" />
+    <Content Include="Views\Login\Access.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
