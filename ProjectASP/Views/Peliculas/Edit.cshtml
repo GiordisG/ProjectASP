@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ProjectASP.Models.PeliculaModel>
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form action="/Peliculas/Edit" method="post" , class="form-horizontal">
+    <h4>PeliculaModel</h4>
+    <hr />
+    @foreach (var item in Model)
+    {
+
+
+        <input type="hidden" name="id" value="@item.Id" />
+        <div class="form-group">
+            <label class="control-label col-md-2">Nombre</label>
+            <div class="col-md-10">
+                <input type="text" name="nombre" value="@item.Nombre" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Autor</label>
+            <div class="col-md-10">
+                <input type="text" name="autor" value="@item.Autor" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Actores</label>
+            <div class="col-md-10">
+                <input type="text" name="actores" value="@item.Actores" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Año</label>
+            <div class="col-md-10">
+                <input type="text" name="año" value="@item.Anio" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Sipnosis</label>
+            <div class="col-md-10">
+                <input type="text" name="sipnosis" value="@item.Sipnosis" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    }
+</form>

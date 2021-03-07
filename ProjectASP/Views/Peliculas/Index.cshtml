@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ProjectASP.Models.PeliculaModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    <h4>peliculamodel</h4>
+    <table border="1" cellspacing="0" width="100%">
+        <tr>
+            <th>id</th>
+            <th>nombre</th>
+            <th>autor</th>
+            <th>actores</th>
+            <th>año</th>
+            <th>sipnosis</th>
+            <th>action</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Nombre</td>
+                <td>@item.Autor</td>
+                <td>@item.Actores</td>
+                <td>@item.Año</td>
+                <td>@item.Sipnosis</td>
+                <td><a href="/Peliculas/Edit/@item.Id">editar</a> <a href="/Peliculas/Delete/@item.Id">eliminar</a></td>
+            </tr>
+        }
+
+    </table>
+</div>

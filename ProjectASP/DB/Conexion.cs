@@ -14,12 +14,9 @@ namespace ProjectASP.DB
             builder.Server = "localhost";
             builder.UserID = "root";
             builder.Password = "";
-            builder.Database = "";
+            builder.Database = "proyectoasp";
             var cn = new MySqlConnection(builder.ToString());
             return cn;
-
-
-
         }
     }
 }

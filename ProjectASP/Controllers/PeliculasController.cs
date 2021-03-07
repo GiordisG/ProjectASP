@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ProjectASP.Models;
 
 namespace ProjectASP.Controllers
 {
@@ -11,7 +12,8 @@ namespace ProjectASP.Controllers
         // GET: Peliculas
         public ActionResult Index()
         {
-            return View();
+            var data = new PeliculaModel().Consulta();
+            return View(data);
         }
 
         // GET: Peliculas/Create
@@ -22,46 +24,32 @@ namespace ProjectASP.Controllers
 
         // POST: Peliculas/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(PeliculaModel model)
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            new PeliculaModel().Insertar(model);
+            return RedirectToAction("Index", "Peliculas");
         }
 
         // GET: Peliculas/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var data = new PeliculaModel().ConsultaId(id);
+            return View(data);
         }
 
         // POST: Peliculas/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(PeliculaModel model)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            new PeliculaModel().Editar(model);
+            return RedirectToAction("Index", "Peliculas");
         }
 
         // GET: Peliculas/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            new PeliculaModel().Eliminar(id);
+            return RedirectToAction("Index", "Peliculas");
         }
     }
 }

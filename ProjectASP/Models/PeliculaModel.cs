@@ -9,19 +9,58 @@ namespace ProjectASP.Models
 {
     public class PeliculaModel 
     {
-        private int Id { get; set; }
-        private string Nombre { get; set; }
-        private string Autor { get; set; }
-        private string Anio { get; set; }
-        private string Sipnosis { get; set; }
-        private string Actores { get; set; }
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Autor { get; set; }
+        public string Actores { get; set; }
+        public string Anio { get; set; }
+        public string Sipnosis { get; set; }
 
         public List<PeliculaModel> Consulta()
         {
             var cn = Conexion.conexion();
-            string query = "SELECT * FROM pelicula";
-            cn.Query<>
-        } 
+            string query = "SELECT * FROM peliculas";
+            return cn.Query<PeliculaModel>(query).ToList();
+        }
+        public bool Insertar(PeliculaModel model)
+        {
+            var cn = Conexion.conexion();
+            string query = "INSERT INTO peliculas (nombre, autor, actores, anio, sipnosis) values('" + model.Nombre + "'," +
+                "'" + model.Autor + "', '" + model.Actores + "', '" + model.Anio + "', '" + model.Sipnosis + "')";
+            if (cn.Execute(query, model) > 0)
+            {
+                return true;
+            }
+            return false;
+
+        }
+        public bool Editar(PeliculaModel model)
+        {
+            var cn = Conexion.conexion();
+            string query = "UPDATE peliculas SET nombre = '" + model.Nombre + "', autor = '" + model.Autor + "', actores = '" + model.Actores + "'," +
+                "anio = '" + model.Anio + "', sipnosis = '" + model.Sipnosis + "'";
+            if (cn.Execute(query, model) > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool Eliminar(int id)
+        {
+            var cn = Conexion.conexion();
+            string query = "DELETE FROM peliculas WHERE id = '" + id + "'";
+            if (cn.Execute(query) > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+        public List<PeliculaModel> ConsultaId(int id)
+        {
+            var cn = Conexion.conexion();
+            string query = "SELECT * FROM peliculas WHERE id = '" + id + "'";
+            return cn.Query<PeliculaModel>(query).ToList();
+        }
     }
 
 }
